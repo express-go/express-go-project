@@ -1,0 +1,35 @@
+{
+  "name": "express-go-module-skeleton",
+  "description": "Skeleton module for Express go framework sample project.",
+  "main": "app.js",
+  "authors": [
+    "Bence"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "express-go",
+    "express",
+    "go",
+    "mvc",
+    "framework",
+    "project",
+    "skeleton",
+    "sample",
+    "express4",
+    "expressjs",
+    "node",
+    "node.js"
+  ],
+  "moduleType": [],
+  "homepage": "homepage",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
