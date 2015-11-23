@@ -47,8 +47,8 @@ $ npm install -g bower
 * Installation
 
 ```
-$ git clone https://bitbucket.org/sipimokus/gamvc.git
-$ cd gamvc
+$ git clone https://github.com/express-go/express-go-project.git
+$ cd express-go-project
 $ npm install
 > Copy .env.example settings to .env? [Y]: y
 > Generating SECRET key for .env settings? [Y]: y
