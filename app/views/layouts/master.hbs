@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{{ block "title" }}}</title>
+
+  <link rel="stylesheet" href="{{ assetPath "lib.min.css" }}">
+  <link rel="stylesheet" href="{{ assetPath "app.min.css" }}">
+  {{{ block "style" }}}
+</head>
+<body>
+  {{{ block "body" }}}
+
+  <i class="fa fa-500px"></i>
+  <script src="{{ assetPath "lib.min.js" }}"></script>
+  <script src="{{ assetPath "app.min.js" }}"></script>
+  {{{ block "script" }}}
+</body>
+</html>

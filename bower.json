@@ -1,0 +1,38 @@
+{
+  "name": "express-go-project",
+  "description": "Bower files to Express go framework sample project.",
+  "main": "app.js",
+  "authors": [
+    "Bence"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "express-go",
+    "express",
+    "go",
+    "mvc",
+    "framework",
+    "project",
+    "skeleton",
+    "sample",
+    "express4",
+    "expressjs",
+    "node",
+    "node.js"
+  ],
+  "moduleType": [],
+  "homepage": "homepage",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "components-font-awesome": "~4.4.0",
+    "jquery": "~2.1.4",
+    "jquery-pjax": "~1.9.6"
+  }
+}

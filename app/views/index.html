@@ -1,0 +1,16 @@
+{% extends "./layouts/default.html" %}
+
+{% block "title" %}{{ title }}{% endblock %}
+
+{% block "content" %}
+  <h1>{{ title }}</h1>
+  <pre>Welcome to {{ title }}</pre>
+  {{ _t("m_user_name_label") }}
+
+    <a href="?lang=hu_HU">HU</a> - <a href="?lang=en_GB">EN</a>
+{% endblock %}
+
+{% block "script" %}
+<script>
+ </script>
+{% endblock %}

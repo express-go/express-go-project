@@ -1,0 +1,69 @@
+{
+  "name": "express-go-project",
+  "version": "0.1.0",
+  "description": "Express go framework sample project.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test" : "node ./bin/cli",
+    "postinstall": "node ./bin/install && bower install && gulp"
+  },
+  "dependencies": {
+    "bower": "^1.6.5",
+    "browser-sync": "^2.9.12",
+    "debug": "~2.2.0",
+    "dotenv": "^1.2.0",
+    "express-go": "git+https://github.com/express-go/express-go.git",
+    "glob": "^6.0.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-fontmin": "^0.7.2",
+    "gulp-jshint": "^1.12.0",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^6.0.1",
+    "gulp-rimraf": "^0.2.0",
+    "gulp-sass": "^2.1.0",
+    "gulp-tsc": "^1.1.4",
+    "gulp-uglify": "^1.4.2",
+    "mysql": "^2.9.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
+    "run-sequence": "^1.1.4",
+    "socket.io": "^1.3.7",
+    "socket.io-redis": "^0.1.4",
+    "socket.io-stream": "^0.9.0",
+    "socket.io.session": "^1.0.13",
+    "spdy": "^2.0.5",
+    "spdy-referrer-push": "0.0.2",
+    "sqlite3": "^3.1.1",
+    "typescript-require": "^0.2.9",
+    "z-i18n": "^1.0.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/express-go/express-go-project.git"
+  },
+  "keywords": [
+    "express-go",
+    "express",
+    "go",
+    "mvc",
+    "framework",
+    "project",
+    "skeleton",
+    "sample",
+    "express4",
+    "expressjs",
+    "node",
+    "node.js"
+  ],
+  "author": "Bence Sipos <sipimokus@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/express-go/express-go-project/issues"
+  },
+  "homepage": "https://github.com/express-go/express-go-project"
+}

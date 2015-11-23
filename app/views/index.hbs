@@ -1,0 +1,37 @@
+{{!< DEFAULT}}
+
+{{#contentFor "title"}}{{ title }}{{/contentFor}}
+
+{{#contentFor "content"}}
+  <h1>{{ title }}</h1>
+  <pre>Welcome to {{ title }}</pre>
+  {{{__ "m_user_name_label" }}}
+
+{{/contentFor}}
+
+{{#contentFor "script"}}
+<script>
+    var socket = io.connect('https://localhost:3000', {
+       'reconnection delay': 100, // defaults to 500
+       'reconnection limit': 100, // defaults to Infinity
+       'max reconnection attempts': Infinity, // defaults to 10
+       'sync disconnect on unload': true,
+       transports: [ 'websocket',
+                                                      'flashsocket',
+                                                      'htmlfile',
+                                                      'xhr-polling',
+                                                      'jsonp-polling',
+                                                      'polling' ]
+    });
+    socket.on('news', function (data) {
+      console.log(data);
+      socket.emit('my other event', { my: 'data' });
+    });
+    socket.on('disconnect', function () {
+       console.log('ws disconnect');
+    });
+    socket.on('connect_failed', function () {
+       console.log('ws connect_failed');
+    });
+  </script>
+{{/contentFor}}

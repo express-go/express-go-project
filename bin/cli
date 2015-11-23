@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+/**
+ * Command-line interface
+ */
+var app = require('../app.js');
+
+require('express-go/cli')( app, __dirname + '/../' );

@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+/**
+ * Application start
+ */
+require('../bootstrap');
+
+var app = require('../app.js');
+var www = require('express-go/www')( app, __dirname + '/../', global );
+
+var debug   = require('debug')('express-go:server');
+
+www.serveCluster(function()
+{
+    // Your code here
+    // ...
+
+    // Start services
+    // HTTP, HTTPS, Socket
+    www.serveService();
+
+});

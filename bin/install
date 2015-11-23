@@ -1,0 +1,119 @@
+/**
+ * Application settings install
+ */
+var sys = require('sys');
+var exec = require('child_process').exec;
+var fs = require('fs');
+var crypto = require('crypto');
+var path = require('path');
+
+var readline = require('readline');
+
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+function copyFile(source, target, cb) {
+    var cbCalled = false;
+
+    var rd = fs.createReadStream(source);
+    rd.on("error", function(err) {
+        done(err);
+    });
+    var wr = fs.createWriteStream(target);
+    wr.on("error", function(err) {
+        done(err);
+    });
+    wr.on("close", function(ex) {
+        done();
+    });
+    rd.pipe(wr);
+
+    function done(err) {
+        if (!cbCalled) {
+          cb(err);
+          cbCalled = true;
+        }
+    }
+}
+
+function puts(error, stdout, stderr) {
+//    sys.puts(stdout)
+}
+
+function answerIsNo( answer, isDefault )
+{
+    return (
+        answer.toLowerCase() == 'n' ||
+        answer.toLowerCase() == 'no' ||
+        answer.toLowerCase() == 'nem' ||
+        answer.toLowerCase() == '0' || (isDefault ? !answer : false)
+    );
+}
+
+var questions =
+{
+    0 : function () {
+        rl.close();
+    },
+    1 : function(cb)
+    {
+        rl.question("Copy .env.example settings to .env? [Y/n]: ", function(answer)
+        {
+            if ( !answerIsNo(answer) )
+            {
+                copyFile(
+                    path.resolve(__dirname + '/../.env.example'),
+                    path.resolve(__dirname + '/../.env'),
+                    cb
+                )
+            }
+            else
+            {
+                cb();
+            }
+        });
+    },
+    2 :  function(cb)
+    {
+        rl.question("Generating SECRET key for .env settings? [Y/n]: ", function(answer)
+        {
+            if ( !answerIsNo(answer) )
+            {
+                fs.readFile(path.resolve(__dirname + '/../.env'), 'utf8', function (err,data) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    var result = data.replace(/SECRET=(.*)/g,
+                        'SECRET=' + crypto.createHash('sha256').update(
+                            crypto.randomBytes(48).toString('hex')
+                        ).digest('base64')
+                    );
+
+                    fs.writeFile('.env', result, 'utf8', function (err)
+                    {
+                        if (err) return console.log(err);
+
+                        cb();
+                    });
+                });
+            }
+            else
+            {
+                cb();
+            }
+        });
+    }
+
+};
+
+
+questions[1](function(){
+    questions[2](function(){
+        questions[0]();
+    })
+});
+
+
