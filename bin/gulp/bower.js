@@ -135,7 +135,7 @@ module.exports = function( gulp )
     gulp.task('bower', function(done)
     {
         runSequence(
-            //'bower-modules',
+            'bower-modules',
             'bower-application',
             'bower-priors',
             'bower-fonts',
