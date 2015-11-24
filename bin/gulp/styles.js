@@ -15,9 +15,9 @@ module.exports = function( gulp )
         return gulp.src( assets_path('less/**/*.less') )
             .pipe(less())
             .pipe(concat('app.less.src.css'))
-            .pipe(gulp.dest(cache_path('assets/build/app')))
-            .pipe(minifyCSS())
-            .pipe(concat('app.less.min.css'))
+            //.pipe(gulp.dest(cache_path('assets/build/app')))
+            //.pipe(minifyCSS())
+            //.pipe(concat('app.less.min.css'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 
@@ -27,9 +27,9 @@ module.exports = function( gulp )
         return gulp.src( assets_path('sass/**/*.scss') )
             .pipe(sass())
             .pipe(concat('app.sass.src.css'))
-            .pipe(gulp.dest(cache_path('assets/build/app')))
-            .pipe(minifyCSS())
-            .pipe(concat('app.sass.min.css'))
+            //.pipe(gulp.dest(cache_path('assets/build/app')))
+            //.pipe(minifyCSS())
+            //.pipe(concat('app.sass.min.css'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 
@@ -37,11 +37,11 @@ module.exports = function( gulp )
     gulp.task('styles-css', function()
     {
         return gulp.src( assets_path('css/**/*.css') )
-            .pipe(concat('app.css.src.css'))
-            .pipe(gulp.dest(cache_path('assets/build/app')))
-            .pipe(minifyCSS())
             .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
-            .pipe(concat('app.css.min.css'))
+            .pipe(concat('app.css.src.css'))
+            //.pipe(gulp.dest(cache_path('assets/build/app')))
+            //.pipe(minifyCSS())
+            //.pipe(concat('app.css.min.css'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 

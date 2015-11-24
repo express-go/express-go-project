@@ -34,9 +34,9 @@ module.exports = function( gulp )
     {
         return gulp.src( cache_path('assets/fonts/**/*.css') )
             .pipe(concat('app.fonts.src.css'))
-            .pipe(gulp.dest( cache_path('assets/build/app') ))
-            .pipe(minifyCSS())
-            .pipe(concat('app.fonts.min.css'))
+            //.pipe(gulp.dest( cache_path('assets/build/app') ))
+            //.pipe(minifyCSS())
+            //.pipe(concat('app.fonts.min.css'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 

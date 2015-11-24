@@ -21,9 +21,9 @@ module.exports = function( gulp )
     {
         return gulp.src( cache_path('assets/typescripts/**/*.js') )
             .pipe(concat('app.typescript.src.js'))
-            .pipe(gulp.dest( cache_path('assets/build/app') ))
-            .pipe(uglify())
-            .pipe(concat('app.typescript.min.js'))
+            //.pipe(gulp.dest( cache_path('assets/build/app') ))
+            //.pipe(uglify())
+            //.pipe(concat('app.typescript.min.js'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 
@@ -32,9 +32,9 @@ module.exports = function( gulp )
     {
         return gulp.src( assets_path('js/**/*.js') )
             .pipe(concat('app.js.src.js'))
-            .pipe(gulp.dest( cache_path('assets/build/app') ))
-            .pipe(uglify())
-            .pipe(concat('app.js.min.js'))
+            //.pipe(gulp.dest( cache_path('assets/build/app') ))
+            //.pipe(uglify())
+            //.pipe(concat('app.js.min.js'))
             .pipe(gulp.dest( cache_path('assets/build/app') ));
     });
 

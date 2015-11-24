@@ -105,11 +105,11 @@ module.exports = function( gulp )
                 cache_path('assets/bower/*.css')
             ]
         )
-            .pipe(concat('bower.src.css'))
-            .pipe(gulp.dest( cache_path('assets/build/lib') ))
-            .pipe(minifyCSS())
             .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
-            .pipe(concat('bower.min.css'))
+            .pipe(concat('bower.src.css'))
+            //.pipe(gulp.dest( cache_path('assets/build/lib') ))
+            //.pipe(minifyCSS())
+            //.pipe(concat('bower.min.css'))
             .pipe(gulp.dest( cache_path('assets/build/lib') ));
     });
 
@@ -118,9 +118,9 @@ module.exports = function( gulp )
     {
         return gulp.src(cache_path('assets/bower/*.js'))
             .pipe(concat('bower.src.js'))
-            .pipe(gulp.dest( cache_path('assets/build/lib') ))
-            .pipe(uglify())
-            .pipe(concat('bower.min.js'))
+            //.pipe(gulp.dest( cache_path('assets/build/lib') ))
+            //.pipe(uglify())
+            //.pipe(concat('bower.min.js'))
             .pipe(gulp.dest( cache_path('assets/build/lib') ));
     });
 

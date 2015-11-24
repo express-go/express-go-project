@@ -12,7 +12,7 @@ module.exports = function( gulp )
     gulp.task('build-lib-scripts', function( next )
     {
         return gulp
-            .src( cache_path('assets/build/lib/*.src.js') )
+            .src( cache_path('assets/build/lib/*.js') )
             .pipe(concat('lib.js'))
             .pipe(gulp.dest( cache_path('assets/build') ))
             .pipe(uglify())
@@ -35,7 +35,7 @@ module.exports = function( gulp )
     gulp.task('build-lib-styles', function( next )
     {
         return gulp
-            .src( cache_path('assets/build/lib/*.src.css') )
+            .src( cache_path('assets/build/lib/*.css') )
             .pipe(concat('lib.css'))
             .pipe(gulp.dest( cache_path('assets/build') ))
             .pipe(minifyCSS())
@@ -82,7 +82,7 @@ module.exports = function( gulp )
     gulp.task('build-app-styles', function( next )
     {
         return gulp
-            .src( cache_path('assets/build/app/*.src.css') )
+            .src( cache_path('assets/build/app/*.css') )
             .pipe(concat('app.css'))
             .pipe(gulp.dest( cache_path('assets/build') ))
             .pipe(minifyCSS())
