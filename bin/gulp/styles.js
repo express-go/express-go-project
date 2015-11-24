@@ -37,7 +37,7 @@ module.exports = function( gulp )
     gulp.task('styles-css', function()
     {
         return gulp.src( assets_path('css/**/*.css') )
-            .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+            //.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
             .pipe(concat('app.css.src.css'))
             //.pipe(gulp.dest(cache_path('assets/build/app')))
             //.pipe(minifyCSS())

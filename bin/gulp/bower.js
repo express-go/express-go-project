@@ -105,7 +105,7 @@ module.exports = function( gulp )
                 cache_path('assets/bower/*.css')
             ]
         )
-            .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+            //.pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
             .pipe(concat('bower.src.css'))
             //.pipe(gulp.dest( cache_path('assets/build/lib') ))
             //.pipe(minifyCSS())

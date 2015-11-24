@@ -38,7 +38,9 @@ module.exports = function( gulp )
             .src( cache_path('assets/build/lib/*.css') )
             .pipe(concat('lib.css'))
             .pipe(gulp.dest( cache_path('assets/build') ))
-            .pipe(minifyCSS())
+            .pipe(minifyCSS({
+                processImportFrom : ['!fonts.googleapis.com']
+            }))
             .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
             .pipe(concat('lib.min.css'))
             .pipe(gulp.dest( cache_path('assets/build') ));
@@ -85,7 +87,9 @@ module.exports = function( gulp )
             .src( cache_path('assets/build/app/*.css') )
             .pipe(concat('app.css'))
             .pipe(gulp.dest( cache_path('assets/build') ))
-            .pipe(minifyCSS())
+            .pipe(minifyCSS({
+                processImportFrom : ['!fonts.googleapis.com']
+            }))
             .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
             .pipe(concat('app.min.css'))
             .pipe(gulp.dest( cache_path('assets/build') ));
