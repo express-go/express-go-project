@@ -1,6 +1,6 @@
 {
-  "name": "express-go-project",
-  "description": "Bower files to Express go framework sample project.",
+  "name": "express-go-module-admin",
+  "description": "Skeleton module for Express go framework sample project.",
   "main": "app.js",
   "authors": [
     "Bence"
@@ -30,9 +30,6 @@
     "tests"
   ],
   "dependencies": {
-    "components-font-awesome": "~4.4.0",
-    "jquery": "~2.1.4",
-    "jquery-pjax": "~1.9.6",
-    "bootstrap": "~3.3.5"
+    "admin-lte": "~2.0"
   }
 }

@@ -1,6 +1,7 @@
 var execSync    = require('sync-exec');
 var runSequence = require('run-sequence');
 var glob        = require('glob');
+var fs          = require('fs');
 
 var autoprefixer= require('gulp-autoprefixer');
 var bowerFiles  = require('main-bower-files');
@@ -8,6 +9,10 @@ var concat      = require('gulp-concat');
 var minifyCSS   = require('gulp-minify-css');
 var uglify      = require('gulp-uglify');
 
+// TODO
+// Kell majd egy bower list, hogy mi települt
+// Szét kell válasytani ay app-mod-admin bowereket
+var bowerList = {};
 
 module.exports = function( gulp )
 {
@@ -29,14 +34,15 @@ module.exports = function( gulp )
                         Object.keys(bowerJson.dependencies).forEach(function(key)
                         {
                             var value = bowerJson.dependencies[key];
-
-                            console.log(key + "#" + value);
+                            var randNum = Math.floor(Math.random() * 10000);
 
                             //var cmd = value && value != "*" ? key + "#" + value : key;
-                            var cmd = key + "#" + value;
+                            var cmd = key + '=' + key + "#" + value + '';
+
+                            console.log("bowerFile", cmd);
 
                             execSync('bower install ' + cmd);
-                            gulp.src(bowerFiles({
+                            gulp.src(require('main-bower-files')({
                                     paths: {
                                         bowerDirectory : base_path('/./bower_components'),
                                         bowerJson      : bowerFile
@@ -44,11 +50,23 @@ module.exports = function( gulp )
                                 }))
                                 .pipe( gulp.dest( cache_path('assets/bower') ) );
 
+                            /*var runGulp = function( randNum1 )
+                            {
+                                return gulp.src(require('main-bower-files')({
+                                        paths: {
+                                            bowerDirectory : base_path('/./bower_components'),
+                                            bowerJson      : bowerFile
+                                        }
+                                    }))
+                                    .pipe( gulp.dest( cache_path('assets/bower/mod_' + randNum1) ) );
+                            };
+                            runGulp( randNum );*/
                         });
                     }
                 });
             }
 
+            execSync('bower update');
             done();
         });
     });
@@ -70,11 +88,11 @@ module.exports = function( gulp )
     gulp.task('bower-fonts', function ()
     {
         return gulp.src([
-                cache_path('assets/bower/*.eot'),
-                cache_path('assets/bower/*.svg'),
-                cache_path('assets/bower/*.ttf'),
-                cache_path('assets/bower/*.woff'),
-                cache_path('assets/bower/*.woff2')
+                cache_path('assets/bower/**/*.eot'),
+                cache_path('assets/bower/**/*.svg'),
+                cache_path('assets/bower/**/*.ttf'),
+                cache_path('assets/bower/**/*.woff'),
+                cache_path('assets/bower/**/*.woff2')
             ])
             .pipe(gulp.dest( public_path('assets/fonts') ));
     });
@@ -82,7 +100,11 @@ module.exports = function( gulp )
     // Bower fonts
     gulp.task('bower-styles', function ()
     {
-        return gulp.src(cache_path('assets/bower/*.css'))
+        return gulp.src(
+            [
+                cache_path('assets/bower/*.css')
+            ]
+        )
             .pipe(concat('bower.src.css'))
             .pipe(gulp.dest( cache_path('assets/build/lib') ))
             .pipe(minifyCSS())
@@ -102,12 +124,20 @@ module.exports = function( gulp )
             .pipe(gulp.dest( cache_path('assets/build/lib') ));
     });
 
+    // Priorizing files
+    gulp.task('bower-priors', function ()
+    {
+        fs.renameSync(cache_path('assets/bower/jquery.js'),    cache_path('assets/bower/aaa__1_jquery.js'));
+        fs.renameSync(cache_path('assets/bower/bootstrap.js'), cache_path('assets/bower/aaa__2_bootstrap.js'));
+    });
+
     // Full task
     gulp.task('bower', function(done)
     {
         runSequence(
-            'bower-modules',
+            //'bower-modules',
             'bower-application',
+            'bower-priors',
             'bower-fonts',
             'bower-styles',
             'bower-scripts',

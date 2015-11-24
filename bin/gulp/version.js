@@ -2,6 +2,9 @@ var runSequence = require('run-sequence');
 
 var concat      = require('gulp-concat');
 var rev         = require('gulp-rev');
+var autoprefixer= require('gulp-autoprefixer');
+var minifyCSS   = require('gulp-minify-css');
+var uglify      = require('gulp-uglify');
 
 module.exports = function( gulp )
 {
@@ -11,6 +14,9 @@ module.exports = function( gulp )
         return gulp
             .src( cache_path('assets/build/lib/*.src.js') )
             .pipe(concat('lib.js'))
+            .pipe(gulp.dest( cache_path('assets/build') ))
+            .pipe(uglify())
+            .pipe(concat('lib.min.js'))
             .pipe(gulp.dest( cache_path('assets/build') ));
 
     });
@@ -31,6 +37,10 @@ module.exports = function( gulp )
         return gulp
             .src( cache_path('assets/build/lib/*.src.css') )
             .pipe(concat('lib.css'))
+            .pipe(gulp.dest( cache_path('assets/build') ))
+            .pipe(minifyCSS())
+            .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+            .pipe(concat('lib.min.css'))
             .pipe(gulp.dest( cache_path('assets/build') ));
 
     });
@@ -51,6 +61,9 @@ module.exports = function( gulp )
         return gulp
             .src( cache_path('assets/build/app/*.src.js') )
             .pipe(concat('app.js'))
+            .pipe(gulp.dest( cache_path('assets/build') ))
+            .pipe(uglify())
+            .pipe(concat('app.min.js'))
             .pipe(gulp.dest( cache_path('assets/build') ));
 
     });
@@ -71,6 +84,10 @@ module.exports = function( gulp )
         return gulp
             .src( cache_path('assets/build/app/*.src.css') )
             .pipe(concat('app.css'))
+            .pipe(gulp.dest( cache_path('assets/build') ))
+            .pipe(minifyCSS())
+            .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9'))
+            .pipe(concat('app.min.css'))
             .pipe(gulp.dest( cache_path('assets/build') ));
 
     });
@@ -104,12 +121,12 @@ module.exports = function( gulp )
         runSequence(
             'build-lib-scripts',
             'build-lib-styles',
-            'build-lib-min-scripts',
-            'build-lib-min-styles',
+            //'build-lib-min-scripts',
+            //'build-lib-min-styles',
             'build-app-scripts',
             'build-app-styles',
-            'build-app-min-scripts',
-            'build-app-min-styles',
+            //'build-app-min-scripts',
+            //'build-app-min-styles',
             'build-version',
             function() {
                 console.log('Versions ready!');
