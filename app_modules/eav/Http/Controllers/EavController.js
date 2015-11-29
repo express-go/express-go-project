@@ -1,5 +1,5 @@
 /**
- * Users Controller
+ * EAV module Controller
  */
 
 module.exports =
@@ -14,17 +14,6 @@ module.exports =
      */
     before  : function(req, res, next)
     {
-        /*var id = req.params.user_id;
-         if (!id) return next();
-         // pretend to query a database...
-         process.nextTick(function(){
-         req.user = db.users[id];
-         // cant find that user
-         if (!req.user) return next('route');
-         // found it, move on to the routes
-         next();
-         });*/
-
         next();
     },
 
@@ -36,7 +25,7 @@ module.exports =
      */
     index   : function(req, res)
     {
-        res.send('I am a Users module :D');
+        res.send('I am a Admina1 module.');
     },
 
     /**
@@ -47,7 +36,7 @@ module.exports =
      */
     create  : function(req, res)
     {
-        res.send("Users create");
+        res.send("skeleton create");
     },
 
     /**
@@ -58,7 +47,7 @@ module.exports =
     store   : function(req, res)
     {
         console.log(req.params);
-        res.send("Users store");
+        res.send("skeleton store");
     },
 
     /**
@@ -69,7 +58,7 @@ module.exports =
      */
     show    : function(req, res)
     {
-        res.send("Users show");
+        res.send("skeleton show");
     },
 
     /**
@@ -81,7 +70,7 @@ module.exports =
     edit    : function(req, res)
     {
         console.log(req.params);
-        res.send("Users edit");
+        res.send("skeleton edit");
     },
 
     /**
@@ -92,7 +81,7 @@ module.exports =
      */
     update  : function(req, res)
     {
-        res.send("Users update");
+        res.send("skeleton update");
     },
 
     /**
@@ -103,6 +92,17 @@ module.exports =
      */
     destroy : function(req, res)
     {
-        res.send("Users destroy");
+        res.send("skeleton destroy");
+    },
+
+    /**
+     * Non-resource function
+     *
+     * @param req
+     * @param res
+     */
+    welcome : function(req, res)
+    {
+        res.send('Welcome Skeleton module.');
     }
 };
