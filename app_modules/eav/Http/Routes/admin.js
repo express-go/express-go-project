@@ -14,7 +14,7 @@ module.exports = function(app)
 
     app.resource(
         '/eav',
-        Modules.Http.Controllers.EavController
+        Modules.Eav.Http.Controllers.EavController
     );
 
 };
