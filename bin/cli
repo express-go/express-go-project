@@ -2,6 +2,7 @@
 /**
  * Command-line interface
  */
-var app = require('../app.js');
+var debug   = require('debug')('express-go:server');
+var app     = require('../app.js');
 
 require('express-go/cli')( app, __dirname + '/../' );

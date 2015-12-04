@@ -2,12 +2,9 @@
 /**
  * Application start
  */
-require('../bootstrap');
-
-var app = require('../app.js');
-var www = require('express-go/www')( app, __dirname + '/../', global );
-
 var debug   = require('debug')('express-go:server');
+var app     = require('../app.js');
+var www     = require('express-go/www')( app, __dirname + '/../', global );
 
 www.serveCluster(function()
 {
@@ -15,7 +12,7 @@ www.serveCluster(function()
     // ...
 
     // Start services
-    // HTTP, HTTPS, Socket
+    // HTTP, HTTPS/SPDY, Socket.io
     www.serveService();
 
 });
