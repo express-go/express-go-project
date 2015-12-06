@@ -2,27 +2,33 @@
  * Helpers
  */
 global.fs = require('fs');
+
 /**
  * Framework helpers
  */
+
 // Base path
 global.base_path = function (innerPath) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     return fs.realpathSync(__dirname + '/../') + '/' + innerPath;
 };
+
 // NPM path
 global.npm_path = function (innerPath) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     return base_path('node_modules/' + innerPath);
 };
+
 // Bower path
 global.bower_path = function (innerPath) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     return base_path('bower_components/' + innerPath);
 };
+
 /**
  * Storage helpers
  */
+
 // Storage path
 global.storage_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -30,6 +36,7 @@ global.storage_path = function (innerPath, getRelative) {
         return 'storage';
     return base_path('storage/' + innerPath);
 };
+
 // Cache path
 global.cache_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -37,6 +44,7 @@ global.cache_path = function (innerPath, getRelative) {
         return 'cache';
     return storage_path('cache/' + innerPath);
 };
+
 // Logs path
 global.logs_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -44,9 +52,11 @@ global.logs_path = function (innerPath, getRelative) {
         return 'logs';
     return storage_path('logs/' + innerPath);
 };
+
 /**
  * Application helpers
  */
+
 // Application path
 global.app_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -61,6 +71,7 @@ global.app_modules = function (innerPath, getRelative) {
         return 'app_modules';
     return base_path('app_modules/' + innerPath);
 };
+
 // Models path
 global.models_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -68,6 +79,7 @@ global.models_path = function (innerPath, getRelative) {
         return 'Models';
     return app_path('Models/' + innerPath);
 };
+
 // Views path
 global.views_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -75,6 +87,7 @@ global.views_path = function (innerPath, getRelative) {
         return 'views';
     return resources_path('views/' + innerPath);
 };
+
 // Public path
 global.public_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -82,6 +95,7 @@ global.public_path = function (innerPath, getRelative) {
         return 'public';
     return base_path('public/' + innerPath);
 };
+
 // Assets path
 global.assets_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -89,11 +103,13 @@ global.assets_path = function (innerPath, getRelative) {
         return resources_path('assets', true);
     return resources_path('assets/' + innerPath);
 };
+
 // Language path
 global.lang_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     return resources_path('lang/' + innerPath);
 };
+
 // Controllers path
 global.controllers_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -101,6 +117,7 @@ global.controllers_path = function (innerPath, getRelative) {
         return 'Http/Controllers';
     return app_path('Http/Controllers/' + innerPath);
 };
+
 // Middlewares path
 global.middlewares_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -108,13 +125,15 @@ global.middlewares_path = function (innerPath, getRelative) {
         return 'Http/Middlewares';
     return app_path('Http/Middlewares/' + innerPath);
 };
+
 // Routes path
 global.routes_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     if (!!getRelative)
-        return 'Http/Routes';
-    return app_path('Http/Routes/' + innerPath);
+        return 'Http/routes';
+    return app_path('Http/routes/' + innerPath);
 };
+
 // Sockets path
 global.sockets_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -122,6 +141,7 @@ global.sockets_path = function (innerPath, getRelative) {
         return 'Http/Sockets';
     return app_path('Http/Sockets/' + innerPath);
 };
+
 // Config path
 global.config_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
@@ -129,6 +149,7 @@ global.config_path = function (innerPath, getRelative) {
         return 'config';
     return app_path('config/' + innerPath);
 };
+
 // Resources path
 global.resources_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
