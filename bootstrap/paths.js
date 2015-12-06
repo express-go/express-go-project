@@ -73,7 +73,7 @@ global.views_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     if (!!getRelative)
         return 'views';
-    return app_path('views/' + innerPath);
+    return resources_path('views/' + innerPath);
 };
 // Public path
 global.public_path = function (innerPath, getRelative) {

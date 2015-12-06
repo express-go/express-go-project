@@ -3,13 +3,14 @@
 {% block "title" %}{{ title }}{% endblock %}
 
 {% block "content" %}
-  <h1>{{ title }}</h1>
-  <pre>Welcome to {{ title }}</pre>
-  {{ _t("m_user_name_label_hehe") }}
+  <h1>{{ _t("site_name") }}</h1>
+  <p>Welcome to {{ title }}</p>
+  {{ _t("user:username") }} : anonymous
 
-    <a href="?lang=hu">HU</a> - <a href="?lang=en">EN</a>
+  <a href="?lang=hu">HU</a> - <a href="?lang=en">EN</a>
+  {{ _t("untracked_field_no_namespace") }} - {{ _t("user:untracked_field") }}
 
-{{ csrfToken }}
+  {{ csrfToken }}
 {% endblock %}
 
 {% block "script" %}

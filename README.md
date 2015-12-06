@@ -23,9 +23,9 @@ Please, see the [express-go](https://github.com/express-go/express-go/) framewor
     * TypeScripts (.ts)
 * Fonts
     *  TrueType (.ttf) 
-    *  Converting to compressed webfonts (eot, .svg, .ttf, .woff, .woff2)
+    *  Converting to compressed webfonts (.eot, .svg, .ttf, .woff, .woff2)
     *  Generating stylesheets (.css) for converted fonts
-* Versioning 
+* Versioned build public files
 
 
 ### How do I get set up? ###
@@ -56,11 +56,7 @@ $ npm install
 
 * Configuration
 
-Edit your ".env" file.
-
-* How to run tests
-
-Noway.
+Edit your ".env" file in project root.
 
 
 ### START ###
@@ -77,7 +73,7 @@ $ node ./bin/www
 * Command-line
 
 ```
-$ npm test
+$ npm run cli
 ```
 or
 ```
