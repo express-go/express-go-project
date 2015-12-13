@@ -15,15 +15,15 @@ if (!location.origin)
         'reconnectionDelay': 500,
         'reconnectionDelayMax' : 1000,
         'reconnectionAttempts': Infinity,
-        'timeout': 20000,
-        transports: [
+        'timeout': 20000//,
+        /*transports: [
             'websocket',
             'flashsocket',
             'htmlfile',
             'xhr-polling',
             'jsonp-polling',
             'polling'
-        ]
+        ]*/
     });
     socket.on('news', function (data) {
         console.log(data);
