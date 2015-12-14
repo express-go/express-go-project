@@ -100,6 +100,13 @@ module.exports = function( gulp )
     // Bower fonts
     gulp.task('bower-styles', function ()
     {
+        gulp.src([
+                base_path('./bower_components/bootstrap/dist/css/bootstrap.css')
+            ])
+            //.pipe(gulp.dest( cache_path('assets/bower') ));
+            .pipe(gulp.dest( cache_path('assets/build/lib') ));
+
+
         return gulp.src(
             [
                 cache_path('assets/bower/*.css')

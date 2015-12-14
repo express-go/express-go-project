@@ -8,8 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="_csrf" content="{# csrfToken #}">
 
+    {% if process.env.APP_ENV == "development" %}
+    <link rel="stylesheet" href="{{ assetPath('lib.css') }}">
+    <link rel="stylesheet" href="{{ assetPath('app.css') }}">
+    {% else %}
     <link rel="stylesheet" href="{{ assetPath('lib.min.css') }}">
     <link rel="stylesheet" href="{{ assetPath('app.min.css') }}">
+    {% endif %}
     {% block "style" %}{% endblock %}
 
 </head>
@@ -20,8 +25,14 @@
 
 {% block "body" %}{% endblock %}
 
+{% if process.env.APP_ENV == "development" %}
+<script src="{{ assetPath('lib.js') }}"></script>
+<script src="{{ assetPath('app.js') }}"></script>
+{% else %}
 <script src="{{ assetPath('lib.min.js') }}"></script>
 <script src="{{ assetPath('app.min.js') }}"></script>
+{% endif %}
 {% block "script" %}{% endblock %}
+
 </body>
 </html>
