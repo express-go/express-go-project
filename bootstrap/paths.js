@@ -3,9 +3,11 @@
  */
 global.fs = require('fs');
 
-var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath ) {
+var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath )
+{
     var returnPath;
 
+    // Clear slashes
     var pathCleaner = function ( cleanPath )
     {
         if ( cleanPath.charAt(0) === "/" || cleanPath.charAt(0) === "\\" )
@@ -17,6 +19,7 @@ var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelat
         return cleanPath;
     };
 
+    // Auto slash prefix
     var pathPrefixer = function( prefixPath )
     {
         if ( typeof prefixPath === 'string' )
@@ -36,16 +39,18 @@ var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelat
         return prefixPath;
     };
 
+    // Pathes
     relativePath = pathPrefixer( relativePath );
     innerPath    = pathPrefixer( innerPath );
     returnPath   = relativePath + innerPath;
 
+    // Non-slash relative path
     if ( !!getRelativePath || typeof parentPathFunction !== "function" )
     {
         return pathCleaner( returnPath );
     }
 
-
+    // Non-slash absolute path
     return parentPathFunction( returnPath );
 };
 
@@ -54,21 +59,21 @@ var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelat
  */
 
 // Base path
-global.base_path = function (innerPath, getRelative)
+global.base_path = function ( innerPath, getRelative )
 {
-    return pathHelper( null, fs.realpathSync( __dirname + '/../' ), innerPath, getRelative);
+    return pathHelper( null, fs.realpathSync( __dirname + '/../' ), innerPath, getRelative );
 };
 
 // NPM path
-global.npm_path = function (innerPath, getRelative)
+global.npm_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "node_modules", innerPath, getRelative);
+    return pathHelper( base_path, "node_modules", innerPath, getRelative );
 };
 
 // Bower path
-global.bower_path = function (innerPath, getRelative)
+global.bower_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "bower_components", innerPath, getRelative);
+    return pathHelper( base_path, "bower_components", innerPath, getRelative );
 };
 
 /**
@@ -76,21 +81,21 @@ global.bower_path = function (innerPath, getRelative)
  */
 
 // Storage path
-global.storage_path = function (innerPath, getRelative)
+global.storage_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "storage", innerPath, getRelative);
+    return pathHelper( base_path, "storage", innerPath, getRelative );
 };
 
 // Cache path
-global.cache_path = function (innerPath, getRelative)
+global.cache_path = function ( innerPath, getRelative )
 {
-    return pathHelper( storage_path, "cache", innerPath, getRelative);
+    return pathHelper( storage_path, "cache", innerPath, getRelative );
 };
 
 // Logs path
-global.logs_path = function (innerPath, getRelative)
+global.logs_path = function ( innerPath, getRelative )
 {
-    return pathHelper( storage_path, "logs", innerPath, getRelative);
+    return pathHelper( storage_path, "logs", innerPath, getRelative );
 };
 
 /**
@@ -98,79 +103,79 @@ global.logs_path = function (innerPath, getRelative)
  */
 
 // Application path
-global.app_path = function (innerPath, getRelative)
+global.app_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "app", innerPath, getRelative);
+    return pathHelper( base_path, "app", innerPath, getRelative );
 };
 
 // Modules path
-global.app_modules = function (innerPath, getRelative)
+global.app_modules = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "app_modules", innerPath, getRelative);
+    return pathHelper( base_path, "app_modules", innerPath, getRelative );
 };
 
 // Models path
-global.models_path = function (innerPath, getRelative)
+global.models_path = function ( innerPath, getRelative )
 {
-    return pathHelper( app_path, "Models", innerPath, getRelative);
+    return pathHelper( app_path, "Models", innerPath, getRelative );
 };
 
 // Views path
-global.views_path = function (innerPath, getRelative)
+global.views_path = function ( innerPath, getRelative )
 {
-    return pathHelper( resources_path, "views", innerPath, getRelative);
+    return pathHelper( resources_path, "views", innerPath, getRelative );
 };
 
 // Public path
-global.public_path = function (innerPath, getRelative)
+global.public_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "public", innerPath, getRelative);
+    return pathHelper( base_path, "public", innerPath, getRelative );
 };
 
 // Assets path
-global.assets_path = function (innerPath, getRelative)
+global.assets_path = function ( innerPath, getRelative )
 {
-    return pathHelper( resources_path, "assets", innerPath, getRelative);
+    return pathHelper( resources_path, "assets", innerPath, getRelative );
 };
 
 // Language path
-global.lang_path = function (innerPath, getRelative)
+global.lang_path = function ( innerPath, getRelative )
 {
-    return pathHelper( lang_path, "lang", innerPath, getRelative);
+    return pathHelper( lang_path, "lang", innerPath, getRelative );
 };
 
 // Controllers path
-global.controllers_path = function (innerPath, getRelative)
+global.controllers_path = function ( innerPath, getRelative )
 {
-    return pathHelper( app_path, "Http/Controllers", innerPath, getRelative);
+    return pathHelper( app_path, "Http/Controllers", innerPath, getRelative );
 };
 
 // Middlewares path
-global.middlewares_path = function (innerPath, getRelative)
+global.middlewares_path = function ( innerPath, getRelative )
 {
-    return pathHelper( app_path, "Http/Middlewares", innerPath, getRelative);
+    return pathHelper( app_path, "Http/Middlewares", innerPath, getRelative );
 };
 
 // Routes path
-global.routes_path = function (innerPath, getRelative)
+global.routes_path = function ( innerPath, getRelative )
 {
-    return pathHelper( app_path, "Http/routes", innerPath, getRelative);
+    return pathHelper( app_path, "Http/routes", innerPath, getRelative );
 };
 
 // Sockets path
-global.sockets_path = function (innerPath, getRelative)
+global.sockets_path = function ( innerPath, getRelative )
 {
-    return pathHelper( app_path, "Http/Sockets", innerPath, getRelative);
+    return pathHelper( app_path, "Http/Sockets", innerPath, getRelative );
 };
 
 // Config path
-global.config_path = function (innerPath, getRelative)
+global.config_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "config", innerPath, getRelative);
+    return pathHelper( base_path, "config", innerPath, getRelative );
 };
 
 // Resources path
-global.resources_path = function (innerPath, getRelative)
+global.resources_path = function ( innerPath, getRelative )
 {
-    return pathHelper( base_path, "resources", innerPath, getRelative);
+    return pathHelper( base_path, "resources", innerPath, getRelative );
 };
