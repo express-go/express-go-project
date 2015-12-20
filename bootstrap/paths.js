@@ -147,7 +147,7 @@ global.config_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     if (!!getRelative)
         return 'config';
-    return app_path('config/' + innerPath);
+    return base_path('config/' + innerPath);
 };
 
 // Resources path
