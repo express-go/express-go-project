@@ -3,12 +3,12 @@
 {% block "title" %}{{ title }}{% endblock %}
 
 {% block "content" %}
-  <h1>{{ _t("site_name") }}</h1>
+  <h1>{{ i18n.t("site_name") }}</h1>
   <p>Welcome to {{ title }}</p>
-  {{ _t("user:username") }} : anonymous
+  {{ i18n.t("user:username") }} : anonymous
 
   <a href="?lang=hu">HU</a> - <a href="?lang=en">EN</a>
-  {{ _t("untracked_field_no_namespace") }} - {{ _t("user:untracked_field") }}
+  {{ i18n.t("untracked_field_no_namespace") }} - {{ i18n.t("user:untracked_field") }}
 
   {{ csrfToken }}
 {% endblock %}
