@@ -3,26 +3,72 @@
  */
 global.fs = require('fs');
 
+var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath ) {
+    var returnPath;
+
+    var pathCleaner = function ( cleanPath )
+    {
+        if ( cleanPath.charAt(0) === "/" || cleanPath.charAt(0) === "\\" )
+            cleanPath = cleanPath.substr(1);
+
+        if ( cleanPath.charAt(cleanPath.length - 1) == "/" || cleanPath.charAt(cleanPath.length - 1) == "\\" )
+            cleanPath = cleanPath.substr(0, cleanPath.length - 1);
+
+        return cleanPath;
+    };
+
+    var pathPrefixer = function( prefixPath )
+    {
+        if ( typeof prefixPath === 'string' )
+        {
+            if ( prefixPath.length > 0 )
+            {
+                prefixPath = pathCleaner( prefixPath );
+            }
+
+            prefixPath = '/' + prefixPath;
+        }
+        else
+        {
+            prefixPath = '';
+        }
+
+        return prefixPath;
+    };
+
+    relativePath = pathPrefixer( relativePath );
+    innerPath    = pathPrefixer( innerPath );
+    returnPath   = relativePath + innerPath;
+
+    if ( !!getRelativePath || typeof parentPathFunction !== "function" )
+    {
+        return pathCleaner( returnPath );
+    }
+
+
+    return parentPathFunction( returnPath );
+};
+
 /**
  * Framework helpers
  */
 
 // Base path
-global.base_path = function (innerPath) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    return fs.realpathSync(__dirname + '/../') + '/' + innerPath;
+global.base_path = function (innerPath, getRelative)
+{
+    return pathHelper( null, fs.realpathSync( __dirname + '/../' ), innerPath, getRelative);
 };
 
 // NPM path
-global.npm_path = function (innerPath) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    return base_path('node_modules/' + innerPath);
+global.npm_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "node_modules", innerPath, getRelative);
 };
 
 // Bower path
-global.bower_path = function (innerPath) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    return base_path('bower_components/' + innerPath);
+global.bower_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "bower_components", innerPath, getRelative);
 };
 
 /**
@@ -30,27 +76,21 @@ global.bower_path = function (innerPath) {
  */
 
 // Storage path
-global.storage_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'storage';
-    return base_path('storage/' + innerPath);
+global.storage_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "storage", innerPath, getRelative);
 };
 
 // Cache path
-global.cache_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'cache';
-    return storage_path('cache/' + innerPath);
+global.cache_path = function (innerPath, getRelative)
+{
+    return pathHelper( storage_path, "cache", innerPath, getRelative);
 };
 
 // Logs path
-global.logs_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'logs';
-    return storage_path('logs/' + innerPath);
+global.logs_path = function (innerPath, getRelative)
+{
+    return pathHelper( storage_path, "logs", innerPath, getRelative);
 };
 
 /**
@@ -58,102 +98,79 @@ global.logs_path = function (innerPath, getRelative) {
  */
 
 // Application path
-global.app_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'app';
-    return base_path('app/' + innerPath);
+global.app_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "app", innerPath, getRelative);
 };
+
 // Modules path
-global.app_modules = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'app_modules';
-    return base_path('app_modules/' + innerPath);
+global.app_modules = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "app_modules", innerPath, getRelative);
 };
 
 // Models path
-global.models_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'Models';
-    return app_path('Models/' + innerPath);
+global.models_path = function (innerPath, getRelative)
+{
+    return pathHelper( app_path, "Models", innerPath, getRelative);
 };
 
 // Views path
-global.views_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'views';
-    return resources_path('views/' + innerPath);
+global.views_path = function (innerPath, getRelative)
+{
+    return pathHelper( resources_path, "views", innerPath, getRelative);
 };
 
 // Public path
-global.public_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'public';
-    return base_path('public/' + innerPath);
+global.public_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "public", innerPath, getRelative);
 };
 
 // Assets path
-global.assets_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return resources_path('assets', true);
-    return resources_path('assets/' + innerPath);
+global.assets_path = function (innerPath, getRelative)
+{
+    return pathHelper( resources_path, "assets", innerPath, getRelative);
 };
 
 // Language path
-global.lang_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    return resources_path('lang/' + innerPath);
+global.lang_path = function (innerPath, getRelative)
+{
+    return pathHelper( lang_path, "lang", innerPath, getRelative);
 };
 
 // Controllers path
-global.controllers_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'Http/Controllers';
-    return app_path('Http/Controllers/' + innerPath);
+global.controllers_path = function (innerPath, getRelative)
+{
+    return pathHelper( app_path, "Http/Controllers", innerPath, getRelative);
 };
 
 // Middlewares path
-global.middlewares_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'Http/Middlewares';
-    return app_path('Http/Middlewares/' + innerPath);
+global.middlewares_path = function (innerPath, getRelative)
+{
+    return pathHelper( app_path, "Http/Middlewares", innerPath, getRelative);
 };
 
 // Routes path
-global.routes_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'Http/routes';
-    return app_path('Http/routes/' + innerPath);
+global.routes_path = function (innerPath, getRelative)
+{
+    return pathHelper( app_path, "Http/routes", innerPath, getRelative);
 };
 
 // Sockets path
-global.sockets_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'Http/Sockets';
-    return app_path('Http/Sockets/' + innerPath);
+global.sockets_path = function (innerPath, getRelative)
+{
+    return pathHelper( app_path, "Http/Sockets", innerPath, getRelative);
 };
 
 // Config path
-global.config_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'config';
-    return base_path('config/' + innerPath);
+global.config_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "config", innerPath, getRelative);
 };
 
 // Resources path
-global.resources_path = function (innerPath, getRelative) {
-    innerPath = typeof innerPath === 'string' ? innerPath : '';
-    if (!!getRelative)
-        return 'resources';
-    return base_path('resources/' + innerPath);
+global.resources_path = function (innerPath, getRelative)
+{
+    return pathHelper( base_path, "resources", innerPath, getRelative);
 };
