@@ -39,7 +39,6 @@
     "typescript-require": "git://github.com/theblacksmith/typescript-require.git#8b756bfdcc02ec42f465a61cecb2ae027abe51db"
   },
   "devDependencies": {
-    "look": "^0.1.3"
   },
   "repository": {
     "type": "git",
