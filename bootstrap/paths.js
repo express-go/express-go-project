@@ -155,5 +155,5 @@ global.resources_path = function (innerPath, getRelative) {
     innerPath = typeof innerPath === 'string' ? innerPath : '';
     if (!!getRelative)
         return 'resources';
-    return app_path('resources/' + innerPath);
+    return base_path('resources/' + innerPath);
 };
