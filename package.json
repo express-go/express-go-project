@@ -14,20 +14,17 @@
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
     "express-go": "^0.1.10",
+    "express-go-gulp": "^0.1.0",
     "glob": "^6.0.1",
     "gulp": "^3.9.0",
-    "main-bower-files": "^2.9.0",
     "mysql": "^2.9.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
     "run-sequence": "^1.1.4",
-    "supports-color": "^3.1.2",
     "swig": "^1.4.2",
-    "typescript-require": "git://github.com/theblacksmith/typescript-require.git#8b756bfdcc02ec42f465a61cecb2ae027abe51db",
-    "express-go-gulp" :   "git://github.com/express-go/express-go-gulp"
+    "typescript-require": "git://github.com/theblacksmith/typescript-require.git#8b756bfdcc02ec42f465a61cecb2ae027abe51db"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/express-go/express-go-project.git"
