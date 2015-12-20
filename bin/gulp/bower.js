@@ -44,7 +44,7 @@ module.exports = function( gulp )
                             execSync('bower install ' + cmd);
                             gulp.src(require('main-bower-files')({
                                     paths: {
-                                        bowerDirectory : base_path('/./bower_components'),
+                                        bowerDirectory : bower_path(),
                                         bowerJson      : bowerFile
                                     }
                                 }))
@@ -54,7 +54,7 @@ module.exports = function( gulp )
                             {
                                 return gulp.src(require('main-bower-files')({
                                         paths: {
-                                            bowerDirectory : base_path('/./bower_components'),
+                                            bowerDirectory : bower_path(),
                                             bowerJson      : bowerFile
                                         }
                                     }))
@@ -76,7 +76,7 @@ module.exports = function( gulp )
     {
         return gulp.src(bowerFiles({
                 paths: {
-                    bowerDirectory : base_path('./bower_components'),
+                    bowerDirectory : bower_path(),
                     bowerJson      : base_path('./bower.json')
                 }
             }))
@@ -101,7 +101,7 @@ module.exports = function( gulp )
     gulp.task('bower-styles', function ()
     {
         gulp.src([
-                base_path('./bower_components/bootstrap/dist/css/bootstrap.css')
+                bower_path('/bootstrap/dist/css/bootstrap.css')
             ])
             //.pipe(gulp.dest( cache_path('assets/bower') ));
             .pipe(gulp.dest( cache_path('assets/build/lib') ));
