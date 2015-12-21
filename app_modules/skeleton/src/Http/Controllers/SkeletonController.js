@@ -2,7 +2,7 @@
  * Skeleton module Controller
  */
 
-module.exports =
+module.exports.controller =
 {
     /**
      * Global middleware

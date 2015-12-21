@@ -2,7 +2,7 @@
  * Users Controller
  */
 
-module.exports =
+module.exports.controller =
 {
     /**
      * Global middleware

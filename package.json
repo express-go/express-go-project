@@ -13,7 +13,7 @@
     "bower": "^1.6.5",
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
-    "express-go": "git://github.com/express-go/express-go",
+    "express-go": "^0.2.2",
     "express-go-gulp": "^0.1.1",
     "glob": "^6.0.1",
     "gulp": "^3.9.0",

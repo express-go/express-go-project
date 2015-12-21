@@ -3,46 +3,45 @@
  */
 global.fs = require('fs');
 
-var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath )
-{
-    var returnPath;
 
-    // Clear slashes
-    var pathCleaner = function ( cleanPath )
+// Clear slashes
+var pathCleaner = function ( cleanPath )
+{
+    if ( cleanPath.length > 1 )
     {
         if ( cleanPath.charAt(0) === "/" || cleanPath.charAt(0) === "\\" )
             cleanPath = cleanPath.substr(1);
 
         if ( cleanPath.charAt(cleanPath.length - 1) == "/" || cleanPath.charAt(cleanPath.length - 1) == "\\" )
             cleanPath = cleanPath.substr(0, cleanPath.length - 1);
+    }
 
-        return cleanPath;
-    };
+    return cleanPath;
+};
 
-    // Auto slash prefix
-    var pathPrefixer = function( prefixPath )
+// Auto slash prefix
+var pathPrefixer = function( prefixPath )
+{
+    if ( typeof prefixPath === 'string' )
     {
-        if ( typeof prefixPath === 'string' )
-        {
-            if ( prefixPath.length > 0 )
-            {
-                prefixPath = pathCleaner( prefixPath );
-            }
+        prefixPath = pathCleaner( prefixPath );
+    }
+    else
+    {
+        prefixPath = '';
+    }
 
-            prefixPath = '/' + prefixPath;
-        }
-        else
-        {
-            prefixPath = '';
-        }
+    return prefixPath;
+};
 
-        return prefixPath;
-    };
+var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath )
+{
+    var returnPath;
 
     // Pathes
     relativePath = pathPrefixer( relativePath );
     innerPath    = pathPrefixer( innerPath );
-    returnPath   = relativePath + innerPath;
+    returnPath   = relativePath + '/' + innerPath;
 
     // Non-slash relative path
     if ( !!getRelativePath || typeof parentPathFunction !== "function" )
@@ -141,7 +140,7 @@ global.assets_path = function ( innerPath, getRelative )
 // Language path
 global.lang_path = function ( innerPath, getRelative )
 {
-    return pathHelper( lang_path, "lang", innerPath, getRelative );
+    return pathHelper( resources_path, "lang", innerPath, getRelative );
 };
 
 // Controllers path

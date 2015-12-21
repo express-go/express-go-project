@@ -2,7 +2,7 @@
  * Default routes
  */
 
-module.exports = function( app )
+module.exports.router = function( app )
 {
     app.get('/', 'front.welcome', function(req, res)
     {

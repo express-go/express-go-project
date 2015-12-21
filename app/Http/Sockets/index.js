@@ -1,7 +1,7 @@
 // Include the cluster module
 var cluster = require('cluster');
 
-module.exports = function (io)
+module.exports.socket = function (io)
 {
     // io stuff here... io.on('conection.....
     io.on('connection', function (socket)
