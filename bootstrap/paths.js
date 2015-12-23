@@ -34,6 +34,7 @@ var pathPrefixer = function( prefixPath )
     return prefixPath;
 };
 
+// Path helper
 var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelativePath )
 {
     var returnPath;
@@ -52,6 +53,7 @@ var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelat
     // Non-slash absolute path
     return parentPathFunction( returnPath );
 };
+
 
 /**
  * Framework helpers
@@ -74,6 +76,7 @@ global.bower_path = function ( innerPath, getRelative )
 {
     return pathHelper( base_path, "bower_components", innerPath, getRelative );
 };
+
 
 /**
  * Storage helpers
@@ -107,28 +110,10 @@ global.app_path = function ( innerPath, getRelative )
     return pathHelper( base_path, "app", innerPath, getRelative );
 };
 
-// Modules path
+// Application modules path
 global.app_modules = function ( innerPath, getRelative )
 {
     return pathHelper( base_path, "app_modules", innerPath, getRelative );
-};
-
-// Models path
-global.models_path = function ( innerPath, getRelative )
-{
-    return pathHelper( app_path, "Models", innerPath, getRelative );
-};
-
-// Views path
-global.views_path = function ( innerPath, getRelative )
-{
-    return pathHelper( resources_path, "views", innerPath, getRelative );
-};
-
-// Public path
-global.public_path = function ( innerPath, getRelative )
-{
-    return pathHelper( base_path, "public", innerPath, getRelative );
 };
 
 // Assets path
@@ -137,44 +122,32 @@ global.assets_path = function ( innerPath, getRelative )
     return pathHelper( resources_path, "assets", innerPath, getRelative );
 };
 
-// Language path
-global.lang_path = function ( innerPath, getRelative )
-{
-    return pathHelper( resources_path, "lang", innerPath, getRelative );
-};
-
-// Controllers path
-global.controllers_path = function ( innerPath, getRelative )
-{
-    return pathHelper( app_path, "Http/Controllers", innerPath, getRelative );
-};
-
-// Middlewares path
-global.middlewares_path = function ( innerPath, getRelative )
-{
-    return pathHelper( app_path, "Http/Middlewares", innerPath, getRelative );
-};
-
-// Routes path
-global.routes_path = function ( innerPath, getRelative )
-{
-    return pathHelper( app_path, "Http/routes", innerPath, getRelative );
-};
-
-// Sockets path
-global.sockets_path = function ( innerPath, getRelative )
-{
-    return pathHelper( app_path, "Http/Sockets", innerPath, getRelative );
-};
-
 // Config path
 global.config_path = function ( innerPath, getRelative )
 {
     return pathHelper( base_path, "config", innerPath, getRelative );
 };
 
+// Language path
+global.lang_path = function ( innerPath, getRelative )
+{
+    return pathHelper( resources_path, "lang", innerPath, getRelative );
+};
+
+// Public path
+global.public_path = function ( innerPath, getRelative )
+{
+    return pathHelper( base_path, "public", innerPath, getRelative );
+};
+
 // Resources path
 global.resources_path = function ( innerPath, getRelative )
 {
     return pathHelper( base_path, "resources", innerPath, getRelative );
+};
+
+// Views path
+global.views_path = function ( innerPath, getRelative )
+{
+    return pathHelper( resources_path, "views", innerPath, getRelative );
 };
