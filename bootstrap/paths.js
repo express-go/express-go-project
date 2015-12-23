@@ -39,7 +39,7 @@ var pathHelper = function( parentPathFunction, relativePath, innerPath, getRelat
 {
     var returnPath;
 
-    // Pathes
+    // Paths
     relativePath = pathPrefixer( relativePath );
     innerPath    = pathPrefixer( innerPath );
     returnPath   = relativePath + '/' + innerPath;
