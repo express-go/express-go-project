@@ -1,9 +1,8 @@
-module.exports =
+module.exports.config =
 {
     /**
      * Express and serving
      */
-
     express :
     {
         enabled : true,
@@ -152,5 +151,4 @@ module.exports =
             useLocalStorage : true
         }
     }
-
 };
