@@ -71,6 +71,12 @@ global.npm_path = function ( innerPath, getRelative )
     return pathHelper( base_path, "node_modules", innerPath, getRelative );
 };
 
+// Bootstrap path
+global.bootstrap_path = function ( innerPath, getRelative )
+{
+    return pathHelper( base_path, "bootstrap", innerPath, getRelative );
+};
+
 // Bower path
 global.bower_path = function ( innerPath, getRelative )
 {
