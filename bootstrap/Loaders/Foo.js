@@ -89,6 +89,20 @@ module.exports.loader = function( app )
 
             // The default method
             // return loadObject( app );
+        },
+
+
+        /**
+         * Disable saving loaded object
+         *
+         * You can "reboot" and re-use loader, if value "false"
+         * Default true, use one instance
+         *
+         * @returns {boolean}
+         */
+        loaderCache : function()
+        {
+            return true;
         }
 
     };
