@@ -1,4 +1,7 @@
 # express-go-project #
+[![Dependency Status](https://img.shields.io/david/express-go/express-go-project.svg?label=deps)](https://david-dm.org/express-go/express-go-project)
+[![devDependency Status](https://img.shields.io/david/dev/express-go/express-go-project.svg?label=devDeps)](https://david-dm.org/express-go/express-go-project#info=devDependencies)
+
 [Express-go](https://github.com/express-go/express-go/) based framework sample project.
 
 #### Under construction, LTS package is expected at the end of December 2015. ####

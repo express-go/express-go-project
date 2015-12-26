@@ -13,7 +13,7 @@
     "bower": "^1.6.5",
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
-    "express-go": "^0.3.0",
+    "express-go": "^0.3.1",
     "express-go-gulp": "^0.1.1",
     "gulp": "^3.9.0",
     "mysql": "^2.9.0",
