@@ -16,10 +16,10 @@
     "express-go": "^0.3.3",
     "express-go-gulp": "^0.1.4",
     "gulp": "^3.9.0",
-    "mysql": "^2.9.0",
+    "mysql": "^2.10.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.0.0",
-    "run-sequence": "^1.1.4",
+    "run-sequence": "^1.1.5",
     "swig": "^1.4.2",
     "typescript-require": "git://github.com/theblacksmith/typescript-require.git#8b756bfdcc02ec42f465a61cecb2ae027abe51db"
   },
