@@ -17,20 +17,9 @@
 ### Framework support ###
 Please, see the [express-go](https://github.com/express-go/express-go/) framework engine repository.
 
+
 ### Gulp support ###
 Please, see the [express-go-gulp](https://github.com/express-go/express-go-gulp/) repository.
-* Stylesheets
-    * Cascading Style Sheets (.css)
-    * LESS (.less)
-    * SASS (.scss)
-* Scripts  
-    * JavaScripts (.js)
-    * TypeScripts (.ts)
-* Fonts
-    *  TrueType (.ttf) 
-    *  Converting to compressed webfonts (.eot, .svg, .ttf, .woff, .woff2)
-    *  Generating stylesheets (.css) for converted fonts
-* Versioned build public files
 
 
 ### How do I get set up? ###
