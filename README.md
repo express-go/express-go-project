@@ -42,12 +42,6 @@ $ apt-get install redis
 $ apt-get install mysql
 ```
 
-* Application Dependencies
-
-```
-$ npm install -g bower
-```
-
 * Installation
 
 ```
@@ -60,8 +54,9 @@ $ npm install
 
 * Configuration
 
-Edit your ".env" file in project root.
-
+```
+$ nano .env
+```
 
 ### START ###
 * Application
