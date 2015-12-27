@@ -15,9 +15,10 @@
 
 
 ### Framework support ###
-Please, see the [express-go](https://github.com/express-go/express-go/) framework engine page.
+Please, see the [express-go](https://github.com/express-go/express-go/) framework engine repository.
 
 ### Gulp support ###
+Please, see the [express-go-gulp](https://github.com/express-go/express-go-gulp/) repository.
 * Stylesheets
     * Cascading Style Sheets (.css)
     * LESS (.less)
