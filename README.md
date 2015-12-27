@@ -1,6 +1,7 @@
 # express-go-project #
 [![Dependency Status](https://img.shields.io/david/express-go/express-go-project.svg?label=deps)](https://david-dm.org/express-go/express-go-project)
 [![devDependency Status](https://img.shields.io/david/dev/express-go/express-go-project.svg?label=devDeps)](https://david-dm.org/express-go/express-go-project#info=devDependencies)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://tldrlegal.com/license/mit-license)
 
 [Express-go](https://github.com/express-go/express-go/) based framework sample project.
 
@@ -68,25 +69,17 @@ Edit your ".env" file in project root.
 ```
 $ npm start
 ```
-or
-```
-$ node ./bin/www
-```
+
+Open in your browser:
+http://localhost/ or https://localhost/
+
 
 * Command-line
 
 ```
 $ npm run cli
 ```
-or
-```
-$ node ./bin/cli
-```
 
-* Site
-
-Open in your browser:
-http://localhost/ or https://localhost/
 
 
 ### Roadmap ###
