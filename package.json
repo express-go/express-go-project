@@ -10,11 +10,11 @@
     "cli": "node ./bin/cli"
   },
   "dependencies": {
-    "bower": "^1.6.5",
+    "bower": "^1.7.1",
     "debug": "~2.2.0",
     "dotenv": "^1.2.0",
-    "express-go": "^0.3.1",
-    "express-go-gulp": "^0.1.2",
+    "express-go": "^0.3.3",
+    "express-go-gulp": "^0.1.4",
     "gulp": "^3.9.0",
     "mysql": "^2.9.0",
     "passport": "^0.3.2",

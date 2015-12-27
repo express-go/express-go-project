@@ -1,16 +1,19 @@
-var cluster  = require( 'cluster' );
-var socketStream = require('socket.io-stream');
+var fs   = require("fs");
+var path = require("path");
 
-module.exports.stream = function ( io )
+module.exports.stream = function ( socket )
 {
-    // io stuff here... io.on('conection.....
-    io.on('connection', function (socket)
+    socket.on('file-upload', function ( stream, data )
     {
-        socket.emit('news', { hello: 'worker: ' + cluster.worker.id });
-        socket.on('my other event', function (data)
-        {
-            console.log(data);
-        });
+        /**
+         * data.name
+         * data.type
+         * data.size
+         * data.date
+         */
+        var filename = path.basename(data.name);
+        stream.pipe(
+            fs.createWriteStream( storage_path( filename ) )
+        );
     });
-
 };

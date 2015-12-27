@@ -1,0 +1,34 @@
+{% extends "../layouts/default.html" %}
+
+{% block "title" %}STREAM teszt{% endblock %}
+
+{% block "content" %}
+  <h1>STREAM teszt</h1>
+
+  {{ csrfToken }}
+<input id="file" type="file" />
+{% endblock %}
+
+{% block "script" %}
+<script>
+  $(function() {
+    var socketStream = io.connect( location.origin + '/file' );
+
+    $('#file').change(function(e)
+    {
+      alert(1);
+      var file = e.target.files[0];
+      var stream = ss.createStream();
+
+      // upload a file to the server.
+      ss(socketStream).emit('file-upload', stream, {
+          name : file.name,
+          type : file.type,
+          size : file.size,
+          date : file.lastModified
+      });
+      ss.createBlobReadStream(file).pipe(stream);
+    });
+  });
+</script>
+{% endblock %}

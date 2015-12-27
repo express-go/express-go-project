@@ -9,4 +9,8 @@ module.exports.router = function( app )
         res.render('index', { title: 'Express1' });
     });
 
+    app.get('/stream', 'test.stream', function(req, res)
+    {
+        res.render('tests/stream');
+    });
 };
