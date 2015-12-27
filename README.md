@@ -14,14 +14,6 @@
 * WWW - Web service support (HTTP, HTTPS, SPDY, Socket.io)
 
 
-### Framework support ###
-Please, see the [express-go](https://github.com/express-go/express-go/) framework engine repository.
-
-
-### Gulp support ###
-Please, see the [express-go-gulp](https://github.com/express-go/express-go-gulp/) repository.
-
-
 ### How do I get set up? ###
 * System Dependencies
 
@@ -65,6 +57,13 @@ http://localhost/ or https://localhost/
 $ npm run cli
 ```
 
+
+### Framework support ###
+Please, see the [express-go](https://github.com/express-go/express-go/) framework engine repository.
+
+
+### Gulp support ###
+Please, see the [express-go-gulp](https://github.com/express-go/express-go-gulp/) repository.
 
 
 ### Roadmap ###
