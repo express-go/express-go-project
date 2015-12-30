@@ -6,7 +6,7 @@ module.exports.router = function(app)
 {
     app.get(
         '/skeleton/welcome',
-        'module.skeleton.welcome',
+        'skeleton.welcome',
         Modules.Skeleton.Http.Controllers.SkeletonController.welcome
     );
 
