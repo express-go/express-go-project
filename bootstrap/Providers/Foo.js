@@ -2,7 +2,7 @@
  * Sample "foo" loader
  */
 
-module.exports.loader = function( app )
+module.exports.provider = function( app )
 {
     return {
 
